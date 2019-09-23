@@ -1,2 +1,27 @@
-/build/build
-/build/.gradle
+# Compiled stuff
+/classes/
+*.class
+*.jar
+
+# IDEA stuff
+*.iml
+/.idea/
+
+#Eclipse stuff
+/eclipse/
+
+# Gradle stuff
+/.gradle/
+/bin/
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Testing stuff
+/config/
+/crash-reports/
+/logs/
+/mods/
+/saves/
+/screenshots/
+/options.txt
+/usernamecache.json

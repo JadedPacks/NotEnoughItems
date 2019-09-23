@@ -1,0 +1,71 @@
+buildscript {
+	repositories {
+		jcenter()
+		maven {
+			name = "forge"
+			url = "http://files.minecraftforge.net/maven"
+		}
+	}
+	dependencies {
+		classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+	}
+}
+
+repositories {
+	maven {
+		name = "chickenbones"
+		url = "http://chickenbones.net/maven"
+	}
+}
+
+apply plugin: 'forge'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+version = "1.7.10.1.0.5.120-JADED_PATCHED"
+group = "codechicken"
+archivesBaseName = "NotEnoughItems"
+
+dependencies {
+	compile "codechicken:CodeChickenLib:1.7.10-1.1.3.138:dev"
+	compile "codechicken:CodeChickenCore:1.7.10-1.0.7.47:dev"
+}
+
+minecraft {
+	version = "1.7.10-10.13.4.1558-1.7.10"
+	runDir = "run"
+	mappings = "stable_12"
+	replace "@VERSION@", project.version
+}
+
+jar {
+	manifest {
+		attributes 'FMLCorePlugin': 'codechicken.nei.asm.NEICorePlugin'
+		attributes 'FMLAT': 'nei_at.cfg'
+	}
+}
+
+def root = project.projectDir.parentFile
+sourceSets {
+	main {
+		java {
+			srcDir new File(root, "src")
+		}
+		resources {
+			srcDir new File(root, "resources")
+		}
+	}
+}
+
+processResources {
+	inputs.property "version", project.version
+	inputs.property "mcversion", project.minecraft.version
+	from(sourceSets.main.resources.srcDirs) {
+		include 'mcmod.info'
+		expand 'version': project.version, 'mcversion': project.minecraft.version
+	}
+	from(sourceSets.main.resources.srcDirs) {
+		exclude 'mcmod.info'
+	}
+}
