@@ -2,8 +2,8 @@
 {
   "modid": "NotEnoughItems",
   "name": "Not Enough Items",
-  "version": "${version}",
-  "mcversion": "${mc_version}",
+  "version": "1.0.5.120-JADED_PATCHED",
+  "mcversion": "1.7.10",
   "description": "Recipe Viewer, Inventory Manager, Item Spawner, Cheats and more.
 
 <plugins>

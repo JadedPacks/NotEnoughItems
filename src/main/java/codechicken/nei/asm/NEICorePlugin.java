@@ -10,6 +10,7 @@ import java.io.File;
 import java.util.Map;
 
 @TransformerExclusions(value = {"codechicken.nei.asm"})
+@IFMLLoadingPlugin.DependsOn(value = {"CodeChickenCore"})
 public class NEICorePlugin implements IFMLLoadingPlugin, IFMLCallHook {
 	public static File location;
 

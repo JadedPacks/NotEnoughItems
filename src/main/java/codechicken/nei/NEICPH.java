@@ -12,7 +12,7 @@ import net.minecraft.network.play.INetHandlerPlayClient;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.world.World;
 
-import java.io.File;
+import java.nio.file.Paths;
 
 public class NEICPH implements IClientPacketHandler {
 	public static final String channel = "NEI";
@@ -21,8 +21,7 @@ public class NEICPH implements IClientPacketHandler {
 		if(Minecraft.getMinecraft().isSingleplayer()) {
 			return "local/" + ClientUtils.getWorldSaveName();
 		}
-		File _test = new File(worldName);
-		return "remote/" + ClientUtils.getServerIP().replace(':', '~') + "/" + _test.getParentFile().getName();
+		return "remote/" + ClientUtils.getServerIP().replace(':', '~') + "/" + Paths.get(worldName).getFileName();
 	}
 
 	public static void sendGiveItem(ItemStack spawnstack, boolean infinite, boolean doSpawn) {
